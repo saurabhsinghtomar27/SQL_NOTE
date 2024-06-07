@@ -86,5 +86,18 @@ select * from ((select * from Employee
        ORDER BY T.`sal` ASC limit 1;
 ```       
 
+## Schema for LPU MYCLASS
+### 1 Lpu will have multiple batches
+### 2 Each batch will have multiple students
+### 3 Each batch will have multiple classes
+### 4 For Each class , we store info about name , date ,time ,instructor
+### 5 For each student we store name email grad_year student_id
+### 6 For every student has a buddy who is also a student
+### 7 A student may more from one batch to another
+### 8 for each batch change by student ,this record should be maintained havinf shifting date and batch details
+### 9 student is assigned a mentor
+### 10 For every mentor their name and company
+### 11 store info about mentor session ,time ,duration student,mentor,rating
+### 12 every batch we store if it online or offline 
 
 
