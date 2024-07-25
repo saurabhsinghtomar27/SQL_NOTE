@@ -117,3 +117,22 @@ select * Rank() over(order by salary desc) from employess
 ```sql 
 select * Rank() over(partiton by level order by salary desc) from employess
 ```
+## Row Between
+### suppose i want a calculate sum of sales of n previous and m next days and showcase it at same day
+```sql
+select *, sum(sales) over(order by date rows between n preceding and m following) from sales;
+```
+### sum of all above rows abn below
+```sql
+select *, sum(sales) over(order by date rows between unbounded preceding and unbounded following) from sales;
+```
+### calculate previous days sales
+```sql
+select *, sum(sales) over(order by date rows between unbounded preceding and current row) from sales;
+```
+## First Value and Last Value
+### calculate the first day sale value
+```sql 
+select *,First_Value(sales) over (partition by state order by date ) first_daysale,
+Last_value(sales) over (partition by state order by date rows between unbounded preceding and unbounded following) last_day_sale from sales;
+``` 
