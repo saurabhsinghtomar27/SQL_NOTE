@@ -98,6 +98,22 @@ select * from ((select * from Employee
 ### 9 student is assigned a mentor
 ### 10 For every mentor their name and company
 ### 11 store info about mentor session ,time ,duration student,mentor,rating
-### 12 every batch we store if it online or offline 
+### 12 every batch we store if it online or offline
+## Cardinality M:M Relationship Create a Mapping Table
+## creating index in sql for fast access 
+```sql
+CREATE INDEX idx_pname
+ON Persons (LastName, FirstName);
+```
+## Rank
 
-
+### Rank() -> It will assign the rank and if same rank occurs it will give same rank and miss the the next rank number
+### Dense_Rank() -> it will not miss the next rank number
+### Row_Number()-> it will give rank differently no same rank
+```sql 
+select * Rank() over(order by salary desc) from employess
+```
+### if we partition rank by some groups
+```sql 
+select * Rank() over(partiton by level order by salary desc) from employess
+```
