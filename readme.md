@@ -135,4 +135,26 @@ select *, sum(sales) over(order by date rows between unbounded preceding and cur
 ```sql 
 select *,First_Value(sales) over (partition by state order by date ) first_daysale,
 Last_value(sales) over (partition by state order by date rows between unbounded preceding and unbounded following) last_day_sale from sales;
-``` 
+```
+## Moving Average
+### it is used to see some trends and pattern in dataset
+### it is used to remove the noise in graph example stock market price
+```sql
+select date,price ,avg(price) over(order by date row between 2 preceding and current row) as three_day_moving_average from stock;
+```
+## lead and lag
+### lead- dealing with the below row
+### lag- dealing with the above row
+```sql
+lag(run) take the previous 1 row
+lead(run) take the next 1 row
+```
+## String AGG
+### it is used to merge or combine many rows into 1 
+### eg - combine customer all orders in one row
+```sql 
+select custid, string_agg(detail,',') from (select custid,concat(item,'-',quantity)detail from details)a
+group by custid;
+```
+ 
+
