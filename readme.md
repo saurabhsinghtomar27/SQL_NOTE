@@ -156,5 +156,19 @@ lead(run) take the next 1 row
 select custid, string_agg(detail,',') from (select custid,concat(item,'-',quantity)detail from details)a
 group by custid;
 ```
- 
+ ## CTE Common Table Expression
+ ```sql
+ with newtablename(columns) as
+ (
+       sql query
+ )
+ ```
+## recursive cte
+```sql
+with recursive cte_numbers(n) as (
+select 1 union All
+  select n+1 from cte_numbers where n<10
+  ) select n, concat(n,' x ','2'), n*2 from cte_numbers;
+  ```
+
 
